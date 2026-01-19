@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-header bg-warning text-dark text-center fw-bold">
+                    <h4>Create Package with Image</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Select Destination</label>
+                            <select name="dest_id" class="form-select" required>
+                                {% for d in destinations %}
+                                <option value="{{ d.id }}">{{ d.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Upload Photo (PNG/JPG)</label>
+                            <input type="file" name="image" class="form-control" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Trip Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Price (₹)</label>
+                                <input type="number" name="price" class="form-control" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Capacity</label>
+                                <input type="number" name="capacity" class="form-control" value="20" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Duration (e.g. 4D/3N)</label>
+                            <input type="text" name="duration" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100">Publish to Website</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
